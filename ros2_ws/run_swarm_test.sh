@@ -7,15 +7,37 @@ cleanup() {
     pkill -f "gz sim" 2>/dev/null || true
     pkill -f "task_publisher" 2>/dev/null || true
     pkill -f "agent_node" 2>/dev/null || true
+    sleep 1
+    pkill -9 -f "gz sim" 2>/dev/null || true
     exit 0
 }
 trap cleanup SIGINT SIGTERM
 
 echo "=== Killing any leftover processes from previous runs ==="
 pkill -f "gz sim" 2>/dev/null || true
+pkill -f "spawn_decor" 2>/dev/null || true
 pkill -f "task_publisher" 2>/dev/null || true
 pkill -f "agent_node" 2>/dev/null || true
-sleep 1
+sleep 2
+
+if pgrep -f "gz sim" > /dev/null; then
+    echo "Some gz sim processes didn't stop gracefully, force killing..."
+    pkill -9 -f "gz sim" 2>/dev/null || true
+    sleep 1
+fi
+
+if pgrep -f "gz sim" > /dev/null; then
+    echo ""
+    echo "ERROR: gz sim is still running and could not be stopped automatically."
+    echo "This usually means a Gazebo window opened outside this script is still open."
+    echo "Currently running gz sim processes:"
+    ps aux | grep "gz sim" | grep -v grep
+    echo ""
+    echo "Close that window/process manually, then re-run this script."
+    exit 1
+fi
+
+echo "=== Confirmed: no leftover Gazebo processes, starting clean ==="
 
 echo "=== Sourcing ROS 2 ==="
 source /opt/ros/jazzy/setup.bash

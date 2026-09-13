@@ -8,6 +8,13 @@ def spawn_box(name, x, y, z, sx, sy, sz, r, g, b):
         f"<collision name='collision'><geometry><box><size>{sx} {sy} {sz}</size></box></geometry></collision>"
         f"</link></model></sdf>"
     )
+    subprocess.run([
+        'gz', 'service', '-s', '/world/empty/create',
+        '--reqtype', 'gz.msgs.EntityFactory',
+        '--reptype', 'gz.msgs.Boolean',
+        '--timeout', '2000',
+        '--req', f"sdf: \"{sdf}\", name: \"{name}\""
+    ])
 
 class SimController:
     def __init__(self, node, robot_id, on_complete=None):
