@@ -1,5 +1,8 @@
+export GZ_PARTITION=swarm-fleet
 #!/bin/bash
 set -e
+export GZ_PARTITION=swarm-fleet
+export LIBGL_ALWAYS_SOFTWARE=1
 
 cleanup() {
     echo ""
