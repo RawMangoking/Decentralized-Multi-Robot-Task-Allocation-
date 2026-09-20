@@ -1,0 +1,24 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: zenoh-router
+  labels:
+    app: zenoh-router
+spec:
+  containers:
+  - name: router
+    image: swarm-agent:latest
+    imagePullPolicy: Never
+    command: ["/bin/bash", "-c"]
+    args: ["source /opt/ros/jazzy/setup.bash && ros2 run rmw_zenoh_cpp rmw_zenohd"]
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: zenoh-router
+spec:
+  selector:
+    app: zenoh-router
+  ports:
+  - port: 7447
+    targetPort: 7447

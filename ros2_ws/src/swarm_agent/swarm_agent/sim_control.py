@@ -1,4 +1,7 @@
 import subprocess
+import os
+
+SIM_ENABLED = os.environ.get('ENABLE_SIM', 'true').lower() == 'true'
 def spawn_box(name, x, y, z, sx, sy, sz, r, g, b):
     sdf = (
         f"<?xml version='1.0'?><sdf version='1.7'><model name='{name}'>"
@@ -58,12 +61,17 @@ class SimController:
             self.stop()
 
     def set_pose(self, entity_name, x, y):
-        subprocess.run([
-            'gz', 'service', '-s', '/world/empty/set_pose',
-            '--reqtype', 'gz.msgs.Pose', '--reptype', 'gz.msgs.Boolean',
-            '--timeout', '1000',
-            '--req', f'name: "{entity_name}", position: {{x: {x}, y: {y}, z: 0.5}}'
-        ])
+        if not SIM_ENABLED:
+            return
+        try:
+            subprocess.run([
+                'gz', 'service', '-s', '/world/empty/set_pose',
+                '--reqtype', 'gz.msgs.Pose', '--reptype', 'gz.msgs.Boolean',
+                '--timeout', '1000',
+                '--req', f'name: "{entity_name}", position: {{x: {x}, y: {y}, z: 0.5}}'
+            ])
+        except FileNotFoundError:
+            pass
 
     def stop(self):
         if self.timer is not None:

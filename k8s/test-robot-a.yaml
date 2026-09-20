@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: robot-a
+  labels:
+    app: robot-a
+spec:
+  containers:
+  - name: agent
+    image: swarm-agent:latest
+    imagePullPolicy: Never
+    args: ["ros2", "run", "swarm_agent", "agent_node", "--ros-args", "-r", "__node:=robot_a", "-p", "robot_id:=robot_a", "-p", "start_x:=0.0", "-p", "start_y:=0.0"]

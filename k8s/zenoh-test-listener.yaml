@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: zenoh-listener
+spec:
+  containers:
+  - name: listener
+    image: swarm-agent:latest
+    imagePullPolicy: Never
+    command: ["/bin/bash", "-c"]
+    args:
+      - source /opt/ros/jazzy/setup.bash &&
+        export RMW_IMPLEMENTATION=rmw_zenoh_cpp &&
+        export ZENOH_CONFIG_OVERRIDE='mode="client";connect/endpoints=["tcp/zenoh-router:7447"]' &&
+        ros2 run demo_nodes_cpp listener
