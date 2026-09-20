@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: robot-b
+  labels:
+    app: robot-b
+spec:
+  containers:
+  - name: agent
+    image: swarm-agent:latest
+    imagePullPolicy: Never
+    command: ["/bin/bash", "-c"]
+    args:
+      - source /opt/ros/jazzy/setup.bash &&
+        export RMW_IMPLEMENTATION=rmw_zenoh_cpp &&
+        export ZENOH_CONFIG_OVERRIDE='mode="client";connect/endpoints=["tcp/zenoh-router:7447"]' &&
+        ros2 run swarm_agent agent_node --ros-args -r __node:=robot_b -p robot_id:=robot_b -p start_x:=10.0 -p start_y:=10.0
