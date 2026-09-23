@@ -20,7 +20,8 @@ setup(
         'console_scripts': [
             'agent_node = swarm_agent.agent_node:main',
             'task_publisher = swarm_agent.task_publisher:main',
-	    'spawn_decor = swarm_agent.spawn_decor:main',
+            'spawn_decor = swarm_agent.spawn_decor:main',
+            'fleet_manager = swarm_agent.fleet_manager:main',
         ],
     },
 )

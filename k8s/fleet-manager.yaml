@@ -1,0 +1,37 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: fleet-manager
+spec:
+  clusterIP: None
+  selector:
+    app: fleet-manager
+  ports:
+  - port: 4321
+    name: raft
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: fleet-manager
+spec:
+  serviceName: fleet-manager
+  replicas: 3
+  selector:
+    matchLabels:
+      app: fleet-manager
+  template:
+    metadata:
+      labels:
+        app: fleet-manager
+    spec:
+      containers:
+      - name: fleet-manager
+        image: swarm-agent:latest
+        imagePullPolicy: Never
+        env:
+        - name: RMW_IMPLEMENTATION
+          value: rmw_zenoh_cpp
+        - name: ZENOH_CONFIG_OVERRIDE
+          value: 'mode="client";connect/endpoints=["tcp/zenoh-router:7447"]'
+        args: ["/fleet_manager_start.sh"]
