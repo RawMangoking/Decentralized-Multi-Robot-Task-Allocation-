@@ -1,0 +1,7 @@
+TEST 1: Leader failover
+Leader killed: fleet-manager-0
+Kill time: Sat Sep 26 17:24:18 UTC 2026
+New leader: fleet-manager-1
+Failover time: 7s
+Robot task-related log lines after kill: 70
+(nonzero means robots kept working during/after the gap)

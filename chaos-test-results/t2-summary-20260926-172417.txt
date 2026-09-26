@@ -1,0 +1,5 @@
+TEST 2: Robot pod failure mid-task
+robot-a killed at: Sat Sep 26 17:24:35 UTC 2026
+Known limitation (Phase 1 finding): no retry mechanism exists.
+Check t2-robot-b-after-20260926-172417.log manually — did robot-b pick up
+the dropped task, or did it silently vanish?

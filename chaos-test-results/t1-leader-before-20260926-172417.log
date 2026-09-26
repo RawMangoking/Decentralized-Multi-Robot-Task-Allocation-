@@ -1,0 +1,20 @@
+Starting as fleet-manager-0.fleet-manager:4321 with partners fleet-manager-1.fleet-manager:4321,fleet-manager-2.fleet-manager:4321
+[INFO] [1790443284.894636842] [fleet_manager]: Leadership status: LEADER
+[INFO] [1790443284.894995447] [fleet_manager]: Announced task 0: Box_A -> Delivery_4
+[INFO] [1790443294.887979770] [fleet_manager]: Announced task 1: Box_F -> Delivery_7
+[INFO] [1790443304.888489102] [fleet_manager]: Announced task 2: Box_H -> Delivery_7
+[INFO] [1790443314.887718297] [fleet_manager]: Announced task 3: Box_I -> Delivery_2
+[INFO] [1790443324.888749209] [fleet_manager]: Announced task 4: Box_J -> Delivery_7
+[INFO] [1790443334.887685394] [fleet_manager]: Announced task 5: Box_F -> Delivery_4
+[INFO] [1790443344.887724200] [fleet_manager]: Announced task 6: Box_B -> Delivery_5
+[INFO] [1790443354.887875557] [fleet_manager]: Announced task 7: Box_A -> Delivery_3
+[INFO] [1790443364.887835601] [fleet_manager]: Announced task 8: Box_B -> Delivery_5
+[INFO] [1790443374.887671181] [fleet_manager]: Announced task 9: Box_F -> Delivery_1
+[INFO] [1790443384.887648350] [fleet_manager]: Announced task 10: Box_J -> Delivery_8
+[INFO] [1790443394.888014856] [fleet_manager]: Announced task 11: Box_D -> Delivery_6
+[INFO] [1790443404.888165938] [fleet_manager]: Announced task 12: Box_F -> Delivery_5
+[INFO] [1790443414.887732621] [fleet_manager]: Announced task 13: Box_I -> Delivery_1
+[INFO] [1790443424.887645838] [fleet_manager]: Announced task 14: Box_C -> Delivery_1
+[INFO] [1790443434.887746406] [fleet_manager]: Announced task 15: Box_J -> Delivery_2
+[INFO] [1790443444.887947599] [fleet_manager]: Announced task 16: Box_A -> Delivery_3
+[INFO] [1790443454.887764795] [fleet_manager]: Announced task 17: Box_B -> Delivery_4
