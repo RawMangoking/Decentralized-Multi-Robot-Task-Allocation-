@@ -1,5 +1,5 @@
 # Swarm-Fleet: Decentralized Multi-Robot Task Allocation on Kubernetes
-
+![Gazebo warehouse environment](swarm_environment.jpg)
 A ROS 2 warehouse robot swarm that reaches task-allocation consensus without a
 central coordinator, deployed to Kubernetes behind a Raft-elected, highly
 available fleet manager. Built to explore two things at once: decentralized
